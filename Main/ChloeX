@@ -5,6 +5,7 @@ local games = {
     [83369512629707] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/SawahIndo.lua",
     [6767841099256] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
     [77747658251236] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    [99684056491472] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
 
 }
 

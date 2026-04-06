@@ -1,19 +1,38 @@
 local games = {
-    [121864768012064] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/FishIt.lua",
-    [127794225497302] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Abyss.lua",
-    [130594398886540] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/GardenHorizon.lua",
-    [83369512629707] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/SawahIndo.lua",
-    [6767841099256] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
-    [77747658251236] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
-    [99684056491472] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
-    [138368689293913] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    ["fish it"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/FishIt.lua",
+    ["abyss"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Abyss.lua",
+    ["garden horizon"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/GardenHorizon.lua",
+    ["sawah indo"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/SawahIndo.lua",
+    ["sailor piece"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    ["boss rush"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    ["infinite tower"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    ["shadow dungeon"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    ["rune dungeon"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    ["double dungeon"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
 }
 
-local currentID = game.PlaceId
-local scriptURL = games[currentID]
+local MarketplaceService = game:GetService("MarketplaceService")
 
-if scriptURL then
-    loadstring(game:HttpGet(scriptURL))()
+local success, name = pcall(function()
+    return MarketplaceService:GetProductInfo(game.PlaceId).Name
+end)
+
+if success then
+    local lowerName = string.lower(name)
+    print("Detected game:", name)
+
+    local found = false
+    for keyword, url in pairs(games) do
+        if string.find(lowerName, keyword) then
+            loadstring(game:HttpGet(url))()
+            found = true
+            break
+        end
+    end
+
+    if not found then
+        game.Players.LocalPlayer:Kick("Yo! This game ain't on the list.\nCheck the Discord for whitelisted games, homie.")
+    end
 else
-    game.Players.LocalPlayer:Kick("Yo! This game ain't on the list.\nCheck the Discord for whitelisted games, homie.")
+    game.Players.LocalPlayer:Kick("Failed to get game info.")
 end

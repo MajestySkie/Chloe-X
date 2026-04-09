@@ -24,13 +24,13 @@ end
 
 local MarketplaceService = game:GetService("MarketplaceService")
 
-local gameId = game.GameId
+local placeId = game.PlaceId
 
-if games[gameId] then
-    loadstring(game:HttpGet(games[gameId]))()
+if games[placeId] then
+    loadstring(game:HttpGet(games[placeId]))()
 else
     local success, name = pcall(function()
-        return MarketplaceService:GetProductInfo(game.PlaceId).Name
+        return MarketplaceService:GetProductInfo(placeId).Name
     end)
 
     if success then

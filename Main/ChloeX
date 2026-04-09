@@ -1,44 +1,17 @@
 local games = {
-    {
-        keywords = {"sailor", "piece"},
-        url = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua"
-    },
-    {
-        keywords = {"fish", "it"},
-        url = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/FishIt.lua"
-    },
-    {
-        keywords = {"abyss"},
-        url = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Abyss.lua"
-    },
-    {
-        keywords = {"garden", "horizon"},
-        url = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/GardenHorizon.lua"
-    },
-    {
-        keywords = {"sawah", "indo"},
-        url = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/SawahIndo.lua"
-    },
-    {
-        keywords = {"boss", "rush"},
-        url = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua"
-    },
-    {
-        keywords = {"infinite", "tower"},
-        url = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua"
-    },
-    {
-        keywords = {"shadow", "dungeon"},
-        url = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua"
-    },
-    {
-        keywords = {"rune", "dungeon"},
-        url = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua"
-    },
-    {
-        keywords = {"double", "dungeon"},
-        url = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua"
-    }
+    [121864768012064] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/FishIt.lua",
+    [127794225497302] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Abyss.lua",
+    [130594398886540] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/GardenHorizon.lua",
+    [83369512629707] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/SawahIndo.lua",
+    [6767841099256] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+}
+
+local subgames = {
+    ["rune dungeon"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    ["shadow dungeon"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    ["double dungeon"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    ["boss rush"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    ["infinite tower"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
 }
 
 local function normalize(str)
@@ -49,37 +22,27 @@ local function normalize(str)
     return str
 end
 
-local function matchesAll(name, keywords)
-    for _, word in ipairs(keywords) do
-        if not string.find(name, word) then
-            return false
-        end
-    end
-    return true
-end
-
 local MarketplaceService = game:GetService("MarketplaceService")
 
-local success, name = pcall(function()
-    return MarketplaceService:GetProductInfo(game.PlaceId).Name
-end)
+local gameId = game.GameId
 
-if success then
-    local lowerName = normalize(name)
-    print("Detected game:", name)
+if games[gameId] then
+    loadstring(game:HttpGet(games[gameId]))()
+else
+    local success, name = pcall(function()
+        return MarketplaceService:GetProductInfo(game.PlaceId).Name
+    end)
 
-    local found = false
-    for _, gameData in ipairs(games) do
-        if matchesAll(lowerName, gameData.keywords) then
-            loadstring(game:HttpGet(gameData.url))()
-            found = true
-            break
+    if success then
+        local lowerName = normalize(name)
+
+        for keyword, url in pairs(subgames) do
+            if string.find(lowerName, keyword) then
+                loadstring(game:HttpGet(url))()
+                return
+            end
         end
     end
 
-    if not found then
-        game.Players.LocalPlayer:Kick("Yo! This game ain't on the list.\nCheck the Discord for whitelisted games, homie.")
-    end
-else
-    game.Players.LocalPlayer:Kick("Failed to get game info.")
+    game.Players.LocalPlayer:Kick("Yo! This game ain't on the list.\nCheck the Discord for whitelisted games, homie.")
 end

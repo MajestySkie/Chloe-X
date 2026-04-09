@@ -1,48 +1,28 @@
 local games = {
-    [121864768012064] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/FishIt.lua",
-    [127794225497302] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Abyss.lua",
-    [130594398886540] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/GardenHorizon.lua",
-    [83369512629707] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/SawahIndo.lua",
-    [77747658251236] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    [6701277882] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/FishIt.lua",
+    [8144728961] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Abyss.lua",
+    [9509842868] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/GardenHorizon.lua",
+    [9691752199] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/SawahIndo.lua",
+    [9186719164] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
 }
 
-local subgames = {
-    ["rune dungeon"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
-    ["shadow dungeon"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
-    ["double dungeon"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
-    ["boss rush"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
-    ["infinite tower"] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
-}
+local StarterGui = game:GetService("StarterGui")
+local gameId = game.GameId
 
-local function normalize(str)
-    str = string.lower(str)
-    str = string.gsub(str, "%b[]", "")
-    str = string.gsub(str, "[^%w%s]", "")
-    str = string.gsub(str, "%s+", " ")
-    return str
+local function notify(title, text, duration)
+    pcall(function()
+        StarterGui:SetCore("SendNotification", {
+            Title = title,
+            Text = text,
+            Duration = duration or 5
+        })
+    end)
 end
 
-local MarketplaceService = game:GetService("MarketplaceService")
-
-local placeId = game.PlaceId
-
-if games[placeId] then
-    loadstring(game:HttpGet(games[placeId]))()
+if games[gameId] then
+    notify("Chloe Notification", "Supported Games! Loadinggg....", 5)
+    task.wait(1)
+    loadstring(game:HttpGet(games[gameId]))()
 else
-    local success, name = pcall(function()
-        return MarketplaceService:GetProductInfo(placeId).Name
-    end)
-
-    if success then
-        local lowerName = normalize(name)
-
-        for keyword, url in pairs(subgames) do
-            if string.find(lowerName, keyword) then
-                loadstring(game:HttpGet(url))()
-                return
-            end
-        end
-    end
-
-    game.Players.LocalPlayer:Kick("Yo! This game ain't on the list.\nCheck the Discord for whitelisted games, homie.")
+    notify("Chloe Notification", "Unsupport Games! Sorry....", 5)
 end

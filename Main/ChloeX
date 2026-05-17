@@ -4,6 +4,7 @@ local games = {
     [9509842868] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/GardenHorizon.lua",
     [9691752199] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/SawahIndo.lua",
     [9186719164] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
+    [9792947201] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/SlimeRNG.lua"
 }
 
 local StarterGui = game:GetService("StarterGui")

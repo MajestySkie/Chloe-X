@@ -1,31 +1,59 @@
-local games = {
-    [6701277882] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/FishIt.lua",
-    [8144728961] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Abyss.lua",
-    [9509842868] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/GardenHorizon.lua",
-    [9691752199] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/SawahIndo.lua",
-    [9186719164] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Sailor.lua",
-    [9792947201] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/SlimeRNG.lua",
-    [10200395747] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/GrowGarden2.lua",
-    [6035872082] = "https://raw.githubusercontent.com/MajestySkie/Chloe-X/refs/heads/main/Games/Rivals.luau",
+local Games = {
+    ["Rivals"] = {
+        Folder = "Rivals",
+        GameId = 6035872082,
+        Script = "https://flowauth.net/v1/loaders/632881ef47682831ac434d58cb875e90.lua",
+    },
+    ["Universal"] = {
+        Folder = "Universal",
+        Script = "https://flowauth.net/v1/loaders/5986e494fa0ec3a28e374ca7d9239dd4.lua",
+    },
 }
 
-local StarterGui = game:GetService("StarterGui")
-local gameId = game.GameId
+if getgenv and getgenv().ChloeX_Running then
+    return Games
+end
 
-local function notify(title, text, duration)
-    pcall(function()
-        StarterGui:SetCore("SendNotification", {
-            Title = title,
-            Text = text,
-            Duration = duration or 5
-        })
+local currentGameId = game.GameId
+local currentPlaceId = game.PlaceId
+local targetGame = nil
+
+for _, data in pairs(Games) do
+    if data.GameId == currentGameId or (type(data.GameId) == "table" and table.find(data.GameId, currentGameId)) then
+        targetGame = data
+        break
+    elseif data.PlaceId == currentPlaceId or (type(data.PlaceId) == "table" and table.find(data.PlaceId, currentPlaceId)) then
+        targetGame = data
+        break
+    end
+end
+
+if not targetGame then
+    targetGame = Games["Universal"]
+end
+
+if targetGame and targetGame.Script and targetGame.Script ~= "" then
+    local success, scriptContent = pcall(function()
+        return game:HttpGet(targetGame.Script)
     end)
+
+    local isValidBody = success
+        and type(scriptContent) == "string"
+        and scriptContent ~= ""
+        and not string.find(scriptContent, "^40" .. "4")
+        and not string.find(scriptContent, "40" .. "4: Not Found")
+        and not string.find(scriptContent, "^%s*<")
+
+    if isValidBody then
+        local chunk, compileErr = loadstring(scriptContent)
+        if chunk then
+            chunk()
+        else
+            warn("Failed to compile loader:", compileErr)
+        end
+    else
+        warn("Failed to fetch loader!")
+    end
 end
 
-if games[gameId] then
-    notify("Chloe Notification", "Supported Games! Loadinggg....", 5)
-    task.wait(1)
-    loadstring(game:HttpGet(games[gameId]))()
-else
-    notify("Chloe Notification", "Unsupport Games! Sorry....", 5)
-end
+return Games

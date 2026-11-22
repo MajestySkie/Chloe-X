@@ -4,6 +4,11 @@ local Games = {
         GameId = 6035872082,
         Script = "https://flowauth.net/v1/loaders/632881ef47682831ac434d58cb875e90.lua",
     },
+    ["BreakStealAndEgg"] = {
+        Folder = "BreakStealAndEgg",
+        GameId = 10765288803,
+        Script = "https://flowauth.net/v1/loaders/8b701036a55d4b363b17c25ee1c79242.lua",
+    },
     ["Universal"] = {
         Folder = "Universal",
         Script = "https://flowauth.net/v1/loaders/5986e494fa0ec3a28e374ca7d9239dd4.lua",

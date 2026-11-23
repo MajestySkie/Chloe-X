@@ -1,0 +1,22 @@
+{
+  "Title": "Throw Food For Animals",
+  "Version": "v1.0.0",
+  "Date": "23 Nov 2026",
+  "Logs": [
+    "[Throw] Core Throw Controller (Custom Power slider, Fast Throw, and Super Throw)",
+    "[Throw] Distance & Abuse Controller (Custom Distance Cap slider up to 10,000 studs)",
+    "[Training] Auto Training System (Automated sequence runner with instant x2 Tap Bonus claimer)",
+    "[Event] Thanksgiving Automation (Auto Throw Ingredient, Auto Cook Sandwich, and Auto Claim Feast Rewards)",
+    "[Event] Thanksgiving Status Monitor (Real-time live phase, ingredients, and zone eligibility panel)",
+    "[Plot] Base Automation (Auto Equip Best with adjustable interval slider & Auto Place Eggs)",
+    "[Economy] Smart Pet Selling (Sell by minimum price tier, $/s income threshold, and Sell All Animals)",
+    "[Economy] Advanced Selling Filters (Multi-selection filters for rarities and mutation attributes)",
+    "[Shop] Base Progression (Auto Buy Best Food, Auto Upgrade Fence, and Auto Upgrade Training Stand)",
+    "[Rewards] Reward Automation (Auto Claim Free Daily Gift, Index Discovery, and Offline Earnings)",
+    "[Visuals] Custom Catch Notifications (3D interactive pet viewport preview with dynamic rarity gradients)",
+    "[Visuals] Cutscene Disabler (Skip throw animations, bypass meter mini-game, and unlock camera rig)",
+    "[Visuals] Interface Cleanup (Hide Throw Countdown, Luck Meter banners, and Area Announcer popups)",
+    "[Visuals] UI Modification (Appended pet rarity tags directly into native AnimalsPanelGui rows)",
+    "[System] Architecture Optimization (Migrated from repetitive loops to reactive DataController observers)"
+  ]
+}

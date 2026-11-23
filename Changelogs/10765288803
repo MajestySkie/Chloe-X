@@ -1,0 +1,24 @@
+{
+  "Title": "Break And Steal Egg",
+  "Version": "v1.0.0",
+  "Date": "22 Nov 2026",
+  "Logs": [
+    "[Farming] Core Break Engine (V1 Standard & V2 Fast Mount Teleport modes)",
+    "[Farming] Guard Mechanics (MoveTo Guard & Wait Guard automated fling triggers)",
+    "[Farming] Target Priority (Smart Fastest, Nearest, Health, Luck, Weight, Titanic/Huge, OneShot)",
+    "[Farming] Fast Swing Watchdog (Auto-disable on server hit rejection threshold)",
+    "[Farming] Best Place Recommendation Engine (Hit damage sweet spot calculator)",
+    "[Filtering] Target Filters (Selected Zones, Eggs, Rarities, and Weather/Event Mutations)",
+    "[Filtering] Currency Threshold (Minimum $/s parser with dynamic multiplier units)",
+    "[Automation] Base Management (Auto Equip Best & Auto Place Pets to Plot)",
+    "[Automation] Auto Upgrades (Instant Upgrade Plot, Pickaxe Tier, and Trails)",
+    "[Automation] Instant Claimers (1-Click Index Rewards & Bat Progression Rewards)",
+    "[Economy] Pet Selling Controller (Auto Sell by $/s, Weight Kg, and Rarity filters)",
+    "[Utility] Gem Magnet (Adjustable collection radius from 20 to 1000 studs)",
+    "[Physics] Character Safety (Anti Ragdoll, Raycast Floor Lock, and Auto Kick on Explode)",
+    "[Visuals] Shake & Effect Suppression (No Camera Shake, No Ride Bobbing, No Screen FFX)",
+    "[Visuals] Egg Animation Disabler (No Idle, No Hit Squash, No Break Particles)",
+    "[Visuals] Plot Rendering Controller (Hide Local & Other Player Plot Pets and Structures)",
+    "[System] Chloe X Architecture (Multi-generation cleanup & remote synchronization)"
+  ]
+}

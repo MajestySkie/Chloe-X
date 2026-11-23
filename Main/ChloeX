@@ -9,6 +9,11 @@ local Games = {
         GameId = 10765288803,
         Script = "https://flowauth.net/v1/loaders/8b701036a55d4b363b17c25ee1c79242.lua",
     },
+    ["ThrowFoodForThan"] = {
+        Folder = "ThrowFoodForThan",
+        GameId = 10766972131,
+        Script = "https://flowauth.net/v1/loaders/c46832e177e0492a605a5cf5c6767b10.lua",
+    },
     ["Universal"] = {
         Folder = "Universal",
         Script = "https://flowauth.net/v1/loaders/5986e494fa0ec3a28e374ca7d9239dd4.lua",

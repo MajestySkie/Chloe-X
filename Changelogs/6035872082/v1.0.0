@@ -1,0 +1,25 @@
+{
+  "Title": "Rivals",
+  "Version": "v1.0.0",
+  "Date": "17 Nov 2026",
+  "Logs": [
+    "[Combat] Radius & Target Controller (Aim Radius, Aim Mode FOV/360, Show FOV Circle, Target Part)",
+    "[Combat] Checker Controller (Wall Check, Team Check, Target Dummies)",
+    "[Combat] Wallbang Controller (Enable Wallbang penetration)",
+    "[Combat] Legit AimBot (Smoothness, Target Priority, Movement Prediction & Multiplier)",
+    "[Combat] Silent Aim (Hooked GetCameraData, Hit Chance slider)",
+    "[Combat] RageBot Aim (Auto Shoot trigger & Shoot Method selector)",
+    "[Combat] Hitbox Expander (Head Hitbox Size, Body Hitbox Size, Show Hitbox Mesh)",
+    "[Weapon Mods] Recoil & Spread (No Weapon Recoil, No Bullet Spread, Instant Weapon Swap)",
+    "[Weapon Mods] Rate of Fire (Rapid Fire, Speed Multiplier, Reset All Weapon Mods)",
+    "[Weapon Mods] Damage & Hit Sound FX (Cat Meow, Neverlose Ding, Uwuuu, Rust Headshot, Minecraft Hit, COD Hitmarker, Custom ID, Mute Default Hit Sound, Volume & Pitch)",
+    "[Visuals] Player ESP (Enable ESP, Bounding Box, Display Names, Distance, Dynamic Health Bar, Skeleton, Tracers & Position, ESP Distance, Team Check)",
+    "[Visuals] Bullet Controller (See AimBullet visual tracer)",
+    "[Visuals] Spin & Character Controller (Spin Speed, Look Down, Unlock Third Person / TPP, Custom FOV)",
+    "[Movement] Speed & Jump Physics (Custom WalkSpeed, Custom Jump Power, Infinite Jump)",
+    "[Movement] Flight & Noclip (Fly Hack & Speed, Noclip Walk Through Walls, BunnyHop)",
+    "[Automation] Duels Automation (Auto Accept Duels, Auto Rematch)",
+    "[Automation] Utility Features (Unlock Mouse Cursor Left Alt, Fullbright)",
+    "[System] Added LocalScript3 & MiscellaneousController anti-detection hook + auto cleanup on re-execute"
+  ]
+}

@@ -4,15 +4,15 @@ local Games = {
         GameId = 6035872082,
         Script = "https://flowauth.net/v1/loaders/632881ef47682831ac434d58cb875e90.lua",
     },
-    ["BreakStealAndEgg"] = {
+    ["Break And Steal an Egg"] = {
         Folder = "BreakStealAndEgg",
         GameId = 10765288803,
         Script = "https://flowauth.net/v1/loaders/8b701036a55d4b363b17c25ee1c79242.lua",
     },
-    ["ThrowFoodForThan"] = {
+    ["Throw Food For Animal"] = {
         Folder = "ThrowFoodForThan",
         GameId = 10766972131,
-        Script = "https://flowauth.net/v1/loaders/c46832e177e0492a605a5cf5c6767b10.lua",
+        Script = "https://flowauth.net/v1/loaders/6dfb82307dfafd0e58c330fed792941c.lua",
     },
     ["Universal"] = {
         Folder = "Universal",
